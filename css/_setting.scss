@@ -1,0 +1,170 @@
+/* ====== 基本設定用 ======*/
+
+body,html{
+    margin: 1% 2% 0 2%;
+    font-size: 16px;
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+.title{
+  color: var(--title-color);
+}
+//カラー変数定義
+:root {
+  --bg-color: #fffaf3;
+  --main-color: #ff7043;
+  --sub-color: #fbc02d;
+  --card-bg: #ffffff;
+  --text-main: #4e342e;
+  --title-color: #d84315;
+  --tab-bg: #ffcc80;
+  --tab-active: #ff7043;
+  --tab-border: #ffe0b2;
+  --green-accent: #a5d6a7;
+  --delete-color: #ef5350;
+  --link-color: #ff8a65;
+  --color-green: #81C784;
+}
+//ボータン
+.lang-btn{
+    background-color: rgb(240, 159, 59);
+}
+.lang-btn:hover{
+    background-color: rgb(204, 116, 45);
+}
+#btn-search,#btn-searchEn,.btn-details,.refreshRecommendBtn{
+    background-color: var(--tab-active);
+}
+.lang-btn,#btn-search,#btn-searchEn,.btn-details,.refreshRecommendBtn{
+    
+    color: white;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+#btn-search:hover,
+#btn-searchEn:hover,
+.btn-details:hover,
+.refreshRecommendBtn:hover,
+.redBtn:hover{
+  background-color: var(--title-color);
+}
+.redBtn{
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    //background-color: #ed6565;
+    background-color: var(--tab-active);
+    color: #ffffff;
+}
+
+
+.lang-en,.lang-ja{
+    margin: 0;
+}
+// 検索エリア
+label {
+    font-size: 14px;
+  
+  }
+  
+  label select,
+  label input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-right: 20px;
+  }
+  #nonSmoking,#openNow{
+    margin-right: 0;
+    margin-left: 10px;
+  }
+  #btn-search{
+margin-left: 20px;
+font-size: 20px;
+  }
+  
+//おすすめキーワードボータン
+
+
+
+//ボタンスタイルの統一設定
+.keyword-btn,.keyword-en-btn {
+  color: #2d231f;
+  padding: 6px 12px;
+  margin-top: 2%;
+  font-size: 14px;
+  font-weight: bolder;
+  background-color: var(--tab-bg);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.keyword-btn:hover ,
+.keyword-en-btn:hover{
+  background-color: var(--sub-color);
+}
+// お気に入りボタン
+.shop-row button {
+    padding: 5px 10px;
+    margin-right: 6px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+.shop-row {
+.remove-btn {
+    background-color: var(--delete-color);
+    color: white;
+  }
+  
+ .remove-btn:hover {
+    background-color: var(--title-color);
+  }
+  
+} 
+.shop-row a button {
+    background-color: #d8ecff;
+    color: #005599;
+  }
+  
+  .shop-row a button:hover {
+    background-color: #c0e0ff;
+  }
+.add-favorite,.info-add-favorite{
+background-color: #ffeb37;
+border-radius: 4px;
+color: #44362e;
+border: none;
+}   
+.add-favorite:hover,.info-add-favorite:hover{
+  background-color: var(--sub-color);
+}  
+.view-detail-btn,.shopsBtn{
+  background-color: var(--color-green);
+  border: none;
+  color: rgb(26, 26, 26);
+ 
+}
+.shopsBtn{
+  margin-top: 20px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+.view-detail-btn:hover,.shopsBtn:hover{
+background-color: #4a8f4e;
+}
+
+  

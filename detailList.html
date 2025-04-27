@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>お気に入り店舗詳細集ページ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+  <div class="detailList">
+
+  <div class="detailList-lang-switch">
+    <button class="lang-btn" onclick="switchLanguage('ja')">日本語</button>
+    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+  </div>
+
+  <h1 class="detailList-title lang-ja">店舗詳細カード一覧</h1>
+  <h1 class="detailList-title lang-en">Favorite Restaurant Cards</h1>
+
+  <div id="tabs" class="tab-container"></div>
+  <div id="detailCardsContainer"></div>
+
+  <a href="index.html" class="detailList-a lang-ja">← ホームに戻る</a>
+  <a href="index.html" class="detailList-a lang-en">← Back to Home</a>
+</div><!--detailList-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="javaScript/detailList.js"></script>
+</body>
+</html>

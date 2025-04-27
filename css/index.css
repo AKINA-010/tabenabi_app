@@ -1,0 +1,28 @@
+.main-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.main-left .mapArea {
+  grid-column: 1/2;
+}
+.main-left .favoriteBOX {
+  grid-column: 2/3;
+}
+
+.awayFrom {
+  display: flex;
+}
+
+.page2 {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+}
+.page2 .keyBox {
+  grid-columns: 1/2;
+}
+.page2 #results {
+  grid-columns: 2/3;
+}
+.page2 .osusume {
+  grid-column: 3/4;
+}/*# sourceMappingURL=index.css.map */

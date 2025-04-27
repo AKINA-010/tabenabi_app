@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>近くのレストラン検索</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="css/destyle.css"> -->
+</head>
+<body>
+  <header>
+
+    <!-- 言語切替ボタン -->
+    <div class="lang-switch desktop-only">
+      <button class="lang-btn" onclick="switchLanguage('ja')">日本語</button>
+      <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+    </div>
+  </header>
+  
+<!-- ハンバーガーボタン（モバイル専用表示） -->
+<button class="hamburger" id="hamburgerBtn"><p>☰</p></button>
+<div class="mobile-menu">
+  
+<!-- モバイル版のお気に入りエリア -->
+<div class="mobile-favoriteEara" id="mobileFavoriteEara">
+  <div class="lang-switch mobile-only">
+    <button class="lang-btn" onclick="switchLanguage('ja')">日本語</button>
+    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+  </div>
+  <h3 class="lang-ja title">お気に入り比較</h3>
+  <h3 class="lang-en title">Favorites Comparison</h3>
+  <div class="favoriteBOX pc-only">
+</div>
+
+<!-- モバイル版お気に入りテーブル -->
+<div class="favoriteBOX mobile-only">
+  <div id="favoriteText">
+  <table id="favoriteTableMobile" class="mobile-only">
+    <thead>
+      <tr>
+        <th class="lang-ja">お店の名前</th>
+        <th class="lang-ja">平均予算</th>
+        <th class="lang-ja">カテゴリ</th>
+        <th class="lang-ja">距離（km）</th>
+        <th class="lang-ja">操作</th>
+        <th class="lang-en" style="display: none;">Shop Name</th>
+        <th class="lang-en" style="display: none;">Budget</th>
+        <th class="lang-en" style="display: none;">Category</th>
+        <th class="lang-en" style="display: none;">Distance (km)</th>
+        <th class="lang-en" style="display: none;">Action</th>
+      </tr>
+    </thead>
+    <tbody id="favoriteTableBodyMobile">
+      <!-- JS挿入  -->
+    </tbody>
+  </table>
+  </div><!-- favoriteText -->
+  
+  <div id="paginationArea" class="paginationArea">
+    <button id="fav-prevBtn">＜</button>
+    <span id="pageNum">1</span>
+    <button id="fav-nextBtn">＞</button>
+  </div>
+</div>
+<button class="shopsBtn lang-ja" onclick="window.location.href='detailList.html'">店舗詳細カードページへ</button>
+<button class="shopsBtn lang-en" onclick="window.location.href='detailList.html'" style="display: none;">Go to Detail Card Page</button>
+</div>
+</div>
+
+
+<div class="main">
+  <div class="--main-left--">
+    <!-- 自動推薦エリア -->
+    <div id="autoRecommendArea" class="autoRecommendArea">
+      <div class="RecommendationsText">
+
+        <h3 class="lang-ja title">現在地付近のおすすめ</h3> <!----> <h3 class="lang-en title">Recommendations near you</h3>
+        <button id="refreshRecommendBtn" class="refreshRecommendBtn lang-ja" style="margin-left: 10px;">更新</button>
+        <button id="refreshRecommendBtn" class="refreshRecommendBtn lang-en" style="margin-left: 10px;">Refresh</button>
+      </div>
+      <div id="autoRecommendContents" class="recommend-cards"></div>
+    </div>
+    <div class="mapArea">
+      <h2 class="lang-ja title">地図</h2> <!----> <h2 class="lang-en title">MAP</h2>
+      <div id="map" style="width: 100%; height: 55vh; margin-bottom: 30px;"></div>
+    </div>
+    
+  </div><!--main-left-->
+ 
+  <div class="favoriteEara">
+    <h3 class="lang-ja title">お気に入り比較</h3> <!----> <h3 class="lang-en title">Favorites Comparison</h3>
+    <div class="favoriteBOX">
+      <!-- 比較テーブルエリア -->
+      <div id="favoriteText">
+        <table id="favoriteTable">
+          <thead>
+            <tr>
+              <th class="lang-ja">お店の名前</th>
+              <th class="lang-ja">平均予算</th>
+              <th class="lang-ja">カテゴリ</th>
+              <th class="lang-ja">距離（km）</th>
+              <th class="lang-ja">操作</th>
+
+              <th class="lang-en" style="display: none;">Shop Name</th>
+              <th class="lang-en" style="display: none;">Budget</th>
+              <th class="lang-en" style="display: none;">Category</th>
+              <th class="lang-en" style="display: none;">Distance (km)</th>
+              <th class="lang-en" style="display: none;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="favoriteTableBody">
+            <!-- JSが挿入 -->
+          </tbody>
+        </table>
+      </div><!--favoriteText-->
+      <div id="paginationArea" class="paginationArea">
+        <button id="fav-prevBtn">＜</button>
+        <span id="pageNum">1</span>
+        <button id="fav-nextBtn">＞</button>
+      </div>
+    </div><!--favoriteBOX-->
+    <button class="shopsBtn lang-ja" onclick="window.location.href='detailList.html'">店舗詳細カードページへ</button>
+    <button class="shopsBtn lang-en" onclick="window.location.href='detailList.html'" style="display: none;">Go to Detail Card Page</button>
+
+  </div>
+</div><!--main-->
+
+<div class="searchEara">
+  <h1 class="lang-ja title">現在地から近いレストラン検索</h1>  <!----> <h1 class="lang-en title">Search Restaurants Near Current Location</h1>
+<div class="searchEaraBox">
+  <form id="searchForm">
+      <div class="awayFrom">
+        <!--JAバージョン-->  
+        <label class="lang-ja">検索範囲:
+          <select id="range">
+            <option value="1">300m</option>
+            <option value="2">500m</option>
+            <option value="3">1km</option>
+            <option value="4">2km</option>
+            <option value="5">3km</option>
+          </select>
+        </label>
+        <!--JAバージョン-->
+        <!--ENバージョン-->
+        <label class="lang-en">Search Range:
+          <select id="range">
+            <option value="1">300m</option>
+            <option value="2">500m</option>
+            <option value="3">1km</option>
+            <option value="4">2km</option>
+            <option value="5">3km</option>
+          </select>
+        </label>
+        <!--ENバージョン-->
+
+        <label >キーワード:
+          <input type="text" id="keyword" placeholder="例：ラーメン">
+        </label>
+       
+        <!--JAバージョン-->
+        <label class="lang-ja">予算:
+          <select id="budget">
+            <option value="">指定しない</option>
+            <option value="B009">~500円</option>
+            <option value="B010">501~1000円</option>
+            <option value="B011">1001~1500円</option>
+            <option value="B001">1501~2000円</option>
+            <option value="B002">2001~3000円</option>
+            <option value="B003">3001~4000円</option>
+            <option value="B008">4001~5000円</option>
+            <option value="B004">5001~7000円</option>
+            <option value="B005">7001~10000円</option>
+            <option value="B006">10001~15000円</option>
+          </select>
+        </label>
+        <!--JAバージョン-->
+        <!--ENバージョン-->
+        <label class="lang-en">Budget:
+          <select id="budget">
+            <option value="">No preference</option>
+            <option value="B009">~500円</option>
+            <option value="B010">501~1000円</option>
+            <option value="B011">1001~1500円</option>
+            <option value="B001">1501~2000円</option>
+            <option value="B002">2001~3000円</option>
+            <option value="B003">3001~4000円</option>
+            <option value="B008">4001~5000円</option>
+            <option value="B004">5001~7000円</option>
+            <option value="B005">7001~10000円</option>
+            <option value="B006">10001~15000円</option>
+          </select>
+        </label>
+        <!--ENバージョン-->
+    
+        <!--JAバージョン-->
+        <label class="lang-ja">料理の種類:
+          <select id="genre">
+            <option value="">指定しない</option>
+            <option value="G001">居酒屋</option>
+            <option value="G007">中華料理</option>
+            <option value="G017">韓国料理</option>
+            <option value="G008">焼肉</option>
+            <option value="G005">お寿司</option>
+          </select>
+        </label>
+        <!--JAバージョン-->
+        <!--ENバージョン-->
+        <label class="lang-en">Cuisine Type:
+          <select id="genre">
+            <option value="">No preference</option>
+            <option value="G001">Izakaya</option>
+            <option value="G007">Chinese cuisine</option>
+            <option value="G017">Korean cuisine</option>
+            <option value="G008">BBQ</option>
+            <option value="G005">Sushi</option>
+          </select>
+        </label>
+        <!--ENバージョン-->
+    
+        <!--JAバージョン-->
+        <label class="lang-ja"><input type="checkbox" id="openNow">只今営業中</label><br>
+        <label class="lang-ja"><input type="checkbox" id="nonSmoking">禁煙</label><br>
+        <!--JAバージョン-->
+        <!--ENバージョン-->
+        <label class="lang-en"><input type="checkbox" id="openNow">Open Now</label><br>
+        <label class="lang-en"><input type="checkbox" id="nonSmoking">No Smoking</label><br>
+        <!--ENバージョン-->
+  
+      <!--JAバージョン-->  
+      <button id="btn-search" class="lang-ja" type="submit">検索</button>
+      <!--JAバージョン-->
+      <!--ENバージョン-->  
+      <button id="btn-searchEn" class="lang-en" type="submit">Search</button>
+      <!--ENバージョン-->
+
+  </div><!--awayFrom-->
+</form>
+</div><!--searchEaraBox-->
+</div><!--searchEara-->
+   
+
+  <div class="page2">
+    <div class="keyBox">   <!--おすすめキーワード-->  
+      <div class="Keywords1" id="Keywords1">
+        <!--JAバージョン--> 
+        <h3 class="lang-ja">おすすめのキーワード</h3>
+        <button type="button" class="keyword-btn lang-ja">ラーメン</button>
+        <button type="button" class="keyword-btn lang-ja">カフェ</button>
+        <button type="button" class="keyword-btn lang-ja">焼肉</button>
+        <button type="button" class="keyword-btn lang-ja">居酒屋</button>
+        <button type="button" class="keyword-btn lang-ja">イタリアン料理</button>
+        <!--JAバージョン--> 
+        <!--ENバージョン--> 
+        <h3 class="lang-en">Recommended</h3>
+        <button type="button" class="keyword-btn lang-en">Ramen</button>
+        <button type="button" class="keyword-btn lang-en">Coffee</button>
+        <button type="button" class="keyword-btn lang-en">BBQ</button>
+        <button type="button" class="keyword-btn lang-en">Izakaya</button>
+        <button type="button" class="keyword-btn lang-en">Italian cuisine</button>
+        <!--ENバージョン--> 
+      </div><!--Keywords1-->
+      <br>
+
+      <div class="keywords2">
+        <!--JAバージョン--> 
+        <h3 class="lang-ja">シチュエーション別おすすめ</h3>
+        <button type="button" class="keyword-btn lang-ja">デート</button>
+        <button type="button" class="keyword-btn lang-ja">女子会</button>
+        <button type="button" class="keyword-btn lang-ja">食べ放題</button>
+        <button type="button" class="keyword-btn lang-ja">夜景</button>
+        <!--JAバージョン--> 
+        <!--ENバージョン-->
+        <h3 class="lang-en">Situation-Based Recommendations</h3>
+        <button type="button" class="keyword-btn lang-en">Date</button>
+        <button type="button" class="keyword-btn lang-en">Girls’ Night</button>
+        <button type="button" class="keyword-btn lang-en">All-you-can-eat</button>
+        <button type="button" class="keyword-btn lang-en">Night View</button> 
+        <!--ENバージョン--> 
+      </div><!--Keywords2-->
+      <br>
+    </div> <!--おすすめキーワード-->  
+    <div class="page2-main">
+      <label class="order lang-ja">
+        <select id="sortType">
+          <option value="">おすすめ順</option>
+          <option value="distance">距離の近い順</option>
+          <option value="priceLow">価格の安い順</option>
+          <option value="priceHigh">価格の高い順</option>
+        </select>
+      </label><br><br>
+      <label class="order lang-en">
+        <select id="sortType">
+          <option value="">Recommended</option>
+          <option value="distance">Nearest First</option>
+          <option value="priceLow">Lowest Price</option>
+          <option value="priceHigh">Highest Price</option>
+        </select>
+      </label><br><br>
+      
+        <div id="results"></div>
+        <div id="pagination">
+          <button class="lang-ja redBtn" id="back" disabled>前のページ</button>
+          <button class="lang-en redBtn" id="backEn" disabled>Previous</button>
+          <span id="pageNumber">1</span>
+          <button class="lang-ja redBtn" id="next">次のページ</button>
+          <button class="lang-en redBtn" id="nextEn">Next</button>
+        </div>
+    </div><!--page2 main-->
+    <div class="keywordEara3">
+      <div id="englishKeywordArea">
+        <strong>Food Suggestions (English)</strong><br><br>
+      
+        <p>食べ物名をクリックすると、自動的に日本語に変換されて検索欄に入力されます。</p>
+        <p>Click a food name in English — it will automatically convert to 
+          Japanese and be inserted into the search bar. </p>
+       
+         <div class="englishKeywordArea-but">
+           <!-- Japanese Food -->
+            <button class="keyword-en-btn" data-jp="ラーメン">Ramen</button>
+            <button class="keyword-en-btn" data-jp="寿司">Sushi</button>
+            <button class="keyword-en-btn" data-jp="そば">Soba</button>
+            <button class="keyword-en-btn" data-jp="うどん">Udon</button>
+            <button class="keyword-en-btn" data-jp="定食">Teishoku</button>
+            <button class="keyword-en-btn" data-jp="居酒屋">Izakaya</button>
+            
+            <br><br>
+          
+            <!-- Asian Food -->
+            <button class="keyword-en-btn" data-jp="中華料理">Chinese</button>
+            <button class="keyword-en-btn" data-jp="韓国料理">Korean</button>
+            <button class="keyword-en-btn" data-jp="カレー">Curry</button>
+            <button class="keyword-en-btn" data-jp="餃子">Gyoza</button>
+            <button class="keyword-en-btn" data-jp="焼肉">Yakiniku</button>
+            
+            <br><br>
+          
+            <!-- Western Food -->
+            <button class="keyword-en-btn" data-jp="イタリアン">Italian</button>
+            <button class="keyword-en-btn" data-jp="ピザ">Pizza</button>
+            <button class="keyword-en-btn" data-jp="ハンバーガー">Burger</button>
+            <button class="keyword-en-btn" data-jp="ステーキ">Steak</button>
+            <button class="keyword-en-btn" data-jp="パスタ">Pasta</button>
+          
+            <br><br>
+          
+            <!-- Cafe & Sweets -->
+            <button class="keyword-en-btn" data-jp="カフェ">Cafe</button>
+            <button class="keyword-en-btn" data-jp="ケーキ">Cake</button>
+            <button class="keyword-en-btn" data-jp="パンケーキ">Pancake</button>
+            <button class="keyword-en-btn" data-jp="パフェ">Parfait</button>
+            <button class="keyword-en-btn" data-jp="タピオカ">Boba</button>
+         </div><!--englishKeywordArea-but-->
+      </div>
+      
+    </div><!--keywordEara3-->
+  </div><!--page2-->
+
+<footer>
+  <div class="backToTop">
+    <a href="">
+        <img class="top_icon" src="img/top_icon.svg" alt="トップへ戻るアイコン">
+    </a>
+  </div>
+</footer>  
+  
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="javaScript/index.js" defer></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzsQ4iIuYUmohk_25heD7S6_tK3H3WTA8&callback=initMap">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1007 @@
+@charset "UTF-8";
+body, html {
+  margin: 1% 2% 0 2%;
+  font-size: 16px;
+  font-family: sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+}
+
+.title {
+  color: var(--title-color);
+}
+
+/* ====== 色彩变量定义 ====== */
+:root {
+  --bg-color: #fffaf3;
+  --main-color: #ff7043;
+  --sub-color: #fbc02d;
+  --card-bg: #ffffff;
+  --text-main: #4e342e;
+  --title-color: #d84315;
+  --tab-bg: #ffcc80;
+  --tab-active: #ff7043;
+  --tab-border: #ffe0b2;
+  --green-accent: #a5d6a7;
+  --delete-color: #ef5350;
+  --link-color: #ff8a65;
+  --color-green: #81C784;
+}
+
+.lang-btn {
+  background-color: rgb(240, 159, 59);
+}
+
+.lang-btn:hover {
+  background-color: rgb(204, 116, 45);
+}
+
+#btn-search, #btn-searchEn, .btn-details, .refreshRecommendBtn {
+  background-color: var(--tab-active);
+}
+
+.lang-btn, #btn-search, #btn-searchEn, .btn-details, .refreshRecommendBtn {
+  color: white;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn-search:hover,
+#btn-searchEn:hover,
+.btn-details:hover,
+.refreshRecommendBtn:hover,
+.redBtn:hover {
+  background-color: var(--title-color);
+}
+
+.redBtn {
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  background-color: var(--tab-active);
+  color: #ffffff;
+}
+
+.lang-en, .lang-ja {
+  margin: 0;
+}
+
+label {
+  font-size: 14px;
+}
+
+label select,
+label input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin-right: 20px;
+}
+
+#nonSmoking, #openNow {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+#btn-search {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+/* 按钮样式统一设置 */
+.keyword-btn, .keyword-en-btn {
+  color: #2d231f;
+  padding: 6px 12px;
+  margin-top: 2%;
+  font-size: 14px;
+  font-weight: bolder;
+  background-color: var(--tab-bg);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.keyword-btn:hover,
+.keyword-en-btn:hover {
+  background-color: var(--sub-color);
+}
+
+.shop-row button {
+  padding: 5px 10px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.shop-row .remove-btn {
+  background-color: var(--delete-color);
+  color: white;
+}
+.shop-row .remove-btn:hover {
+  background-color: var(--title-color);
+}
+
+.shop-row a button {
+  background-color: #d8ecff;
+  color: #005599;
+}
+
+.shop-row a button:hover {
+  background-color: #c0e0ff;
+}
+
+.add-favorite, .info-add-favorite {
+  background-color: #ffeb37;
+  border-radius: 4px;
+  color: #44362e;
+  border: none;
+}
+
+.add-favorite:hover, .info-add-favorite:hover {
+  background-color: var(--sub-color);
+}
+
+.view-detail-btn, .shopsBtn {
+  background-color: var(--color-green);
+  border: none;
+  color: rgb(26, 26, 26);
+}
+
+.shopsBtn {
+  margin-top: 20px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.view-detail-btn:hover, .shopsBtn:hover {
+  background-color: #4a8f4e;
+}
+
+.lang-switch {
+  display: flex;
+  justify-content: end;
+}
+.lang-switch button {
+  margin-right: 5px;
+}
+
+.hamburger,
+.mobile-favoriteEara {
+  display: none;
+}
+
+.top_icon {
+  position: fixed;
+  bottom: 6%;
+  right: 6%;
+  width: 7vh;
+  padding: 3px;
+  border-radius: 55px;
+  border: solid 2px rgb(97, 97, 97);
+}
+
+.pc-only {
+  display: block;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 50px;
+  /* 整个表格容器 */
+}
+.main .main-left {
+  grid-column: 1/2;
+}
+.main .mapArea {
+  margin-top: 5%;
+}
+.main .mapArea .map-card-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.main .mapArea .map-card-btn a {
+  display: inline-block;
+}
+.main .favoriteEara {
+  grid-column: 2/3;
+  margin-top: 15%;
+  text-align: center;
+}
+.main .favoriteEara h3 {
+  margin-bottom: 5%;
+}
+.main .favoriteEara .favoriteBOX {
+  background-color: var(--card-bg);
+  min-height: 70vh;
+  position: relative;
+}
+.main .favoriteEara .paginationArea {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 15px;
+}
+.main #favoriteTableBody {
+  padding: 3% 2% 0 2%;
+}
+.main #favoriteTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+.main #favoriteTable th {
+  padding: 10px 3px;
+  border-bottom: 1px solid var(--tab-border);
+}
+.main #favoriteTable thead {
+  background-color: #ffeb37;
+}
+.main .shop-row td {
+  padding: 8px;
+  border-bottom: 1px solidvar(--tab-border);
+}
+.main .shop-row button {
+  margin-top: 5px;
+}
+.main .shop-row:hover {
+  background-color: #f9f9f9;
+}
+
+.autoRecommendArea {
+  margin-top: 10%;
+}
+.autoRecommendArea .recommend-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+.RecommendationsText {
+  display: flex;
+}
+.RecommendationsText .refreshRecommendBtn {
+  margin-left: 20px;
+}
+
+.recommendBtnBOX {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recommendShop-card {
+  border: 1px solid var(--tab-border);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 200px;
+  flex: 1 1 calc(33% - 20px); /* 每行最多显示3个 */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.recommendShop-card h4, .recommendShop-card p {
+  margin: 0;
+}
+
+.searchEara {
+  margin-top: 7%;
+  text-align: center;
+}
+.searchEara .searchEaraBox {
+  margin-top: 1%;
+  background-color: var(--tab-bg);
+  border-radius: 15px;
+  padding-left: 6%;
+}
+
+.awayFrom {
+  display: flex;
+  align-items: center;
+}
+.awayFrom label {
+  flex-direction: column;
+}
+
+.page2 {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 1fr;
+  gap: 25px;
+  margin-top: 5%;
+  padding-bottom: 20%;
+}
+.page2 .keyBox {
+  text-align: center;
+  grid-columns: 1/2;
+}
+.page2 .keyBox h3 {
+  font-size: 1rem;
+  margin-bottom: 10%;
+}
+.page2 .keyBox .Keywords1 {
+  padding: 5%;
+  background-color: #f8f1ea;
+  margin-bottom: 5%;
+}
+.page2 .keyBox .keywords2 {
+  padding: 5%;
+  background-color: #f8f1ea;
+  margin-bottom: 5%;
+}
+.page2 .keyword-section,
+.page2 .recommendKeywords {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px; /* 按钮之间的间隔 */
+  margin-bottom: 20px;
+}
+.page2 .osusume {
+  grid-column: 3/4;
+}
+.page2 .page2-main {
+  grid-columns: 2/3;
+}
+.page2 .page2-main .order {
+  float: right;
+}
+.page2 .page2-main #results {
+  grid-columns: 2/3;
+  margin: 3% 5%;
+  border-bottom: solid 1px rgb(240, 240, 240);
+}
+.page2 .page2-main #pagination {
+  text-align: center;
+}
+.page2 .page2-main .shop-card {
+  border: 3px solid var(--tab-border);
+  margin: 0 0 10px 0;
+  padding: 20px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+}
+.page2 .page2-main .shop-card img {
+  max-width: 150px;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 25px;
+}
+.page2 .page2-main .shop-card h2 {
+  margin: 0;
+}
+.page2 .page2-main .shop-card a {
+  display: inline-block;
+}
+.page2 .page2-main .shop-card .shop-cardMain {
+  display: flex;
+  justify-content: space-between;
+}
+.page2 .page2-main .shop-card-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.page2 .keywordEara3 {
+  background-color: #f8f1ea;
+  padding: 5% 3%;
+  height: 60vh;
+}
+.page2 .keywordEara3 p {
+  opacity: 0.6;
+  margin-top: 0;
+}
+.page2 .keywordEara3 .englishKeywordArea-but {
+  margin-top: 20%;
+}
+
+/* === 响应式设计 for 手机端 === */
+@media screen and (max-width: 768px) {
+  body, html {
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+  }
+  .pc-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+  .searchEara .searchEaraBox {
+    padding: 20px;
+  }
+  .searchEara .searchEaraBox label {
+    padding: 0;
+  }
+  .searchEara .searchEaraBox label input {
+    padding: 10px 3px;
+  }
+  .main {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 0;
+  }
+  .autoRecommendArea {
+    margin: 15% 3% 2% 3%;
+  }
+  .refreshRecommendBtn {
+    width: 20%;
+  }
+  .hamburger {
+    display: block;
+    justify-content: end;
+    width: 15%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    border: none;
+    font-size: 16px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  .hamburger p {
+    font-size: 4rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .mobile-only {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .lang-switch {
+    margin: 20px;
+  }
+  .mobile-favoriteEara {
+    display: none;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    font-size: 0.8rem;
+    padding: 5px;
+    border-top: 1px solid #ccc;
+  }
+  .mobile-favoriteEara thead {
+    background-color: #ffeb37;
+  }
+  .mobile-favoriteEara .shop-row td {
+    padding: 2px;
+    border-bottom: 1px solidvar(--tab-border);
+  }
+  .mobile-favoriteEara .shop-row:hover {
+    background-color: #f9f9f9;
+  }
+  .mobile-favoriteEara.open {
+    display: block;
+  }
+  .mobile-favoriteEara.active {
+    display: block;
+    z-index: 100;
+  }
+  /* 隐藏PC版收藏区域 */
+  .favoriteEara, .desktop-only {
+    display: none;
+  }
+  .--main-left-- {
+    grid-row: 1/2;
+    grid-column: 1/3;
+    width: 100%;
+  }
+  .recommendBtnBOX {
+    flex-direction: column;
+  }
+  .mapArea #map {
+    height: 300px;
+  }
+  button,
+  select,
+  input {
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .keyword-btn,
+  .keyword-en-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin: 4px;
+  }
+  .recommend-cards button,
+  .favoriteBOX button {
+    margin: 0;
+    height: 50px;
+  }
+  .autoRecommendArea .recommend-cards {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+  table#favoriteTable {
+    font-size: 14px;
+  }
+  #paginationArea {
+    display: flex;
+    margin-top: 20px;
+  }
+  .searchEara,
+  .page2-main {
+    padding: 10px;
+  }
+  .shopsBtn {
+    width: 100%;
+    font-size: 14px;
+    height: 50px;
+    margin-bottom: 5%;
+  }
+  .awayFrom {
+    display: flex;
+    flex-direction: column;
+  }
+  .awayFrom label,
+  .awayFrom input,
+  .awayFrom select,
+  .awayFrom button {
+    font-size: 16px;
+    width: 100%;
+  }
+  #btn-search,
+  #btn-searchEn {
+    margin: 0;
+    padding: 10px;
+    font-size: 18px;
+    background-color: var(--main-color, #ff8a65);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .page2 .keyBox .Keywords1 {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .page2 .keyBox .keywords2 {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  .page2 {
+    display: grid;
+    grid-template-rows: 0.5fr auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .page2 .keyBox {
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .page2 .page2-main {
+    grid-row: 2/3;
+    grid-column: 1/3;
+  }
+  .page2 .page2-main #pagination {
+    display: flex;
+  }
+  .page2 .keywordEara3 {
+    grid-row: 2/3;
+    grid-column: 1/3;
+    height: auto;
+    display: none;
+  }
+  .page2 .keywordEara3 .englishKeywordArea-but {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .page2 .keywordEara3 .englishKeywordArea-but button {
+    width: 80px;
+  }
+}
+.detail {
+  font-family: "Helvetica", "Arial", sans-serif;
+  background-color: var(--bg-color);
+  height: 100vh;
+  overflow: hidden;
+  color: var(--text-main);
+  margin: 0;
+  padding: 20px;
+}
+.detail h1 {
+  font-size: 2rem;
+}
+.detail h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  grid-column: 1/3;
+}
+
+.details-lang-switch {
+  display: flex;
+  justify-content: end;
+  margin-right: 6%;
+}
+.details-lang-switch button {
+  margin-right: 5px;
+}
+
+.ShopDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.ShopText {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 3% 8%;
+  background-color: var(--card-bg);
+  border: 2px solid var(--tab-border);
+  border-radius: 20px;
+  padding: 3%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width: 80%;
+}
+.ShopText p {
+  margin: 8px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.ShopText .shopTextLeft {
+  grid-column: 1/2;
+}
+.ShopText .shopTextRight {
+  grid-column: 2/3;
+  margin-left: 5%;
+  text-align: center;
+  position: relative;
+}
+
+#shopImage {
+  margin: 15px 0;
+  width: 100%;
+  max-width: 60%;
+  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#shopLink {
+  display: inline-block;
+  position: absolute;
+  bottom: 3%;
+  right: 0;
+  margin: 10px 0;
+  padding: 8px 16px;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#shopLink:hover {
+  background-color: var(--title-color);
+}
+
+.details-a {
+  margin: 0;
+}
+
+.details-a[href="index.html"] {
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.details-a[href="index.html"]:hover {
+  color: var(--text-main);
+}
+
+@media screen and (max-width: 768px) {
+  .detail {
+    padding: 10px;
+  }
+  .details-lang-switch {
+    justify-content: center;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .ShopDetail {
+    padding: 10px;
+  }
+  .ShopText {
+    grid-template-columns: 1fr; /* 变成单列 */
+    gap: 20px;
+    width: 100%;
+    padding: 15px;
+  }
+  .ShopText p {
+    margin: 20px;
+  }
+  .shopTextLeft,
+  .shopTextRight {
+    grid-column: 1/-1;
+    margin-left: 0;
+    text-align: left;
+  }
+  .ShopText .shopTextRight {
+    margin-left: 0;
+  }
+  #shopImage {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+  }
+  #shopLink {
+    position: static;
+    display: block;
+    margin: 0 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .details-a[href="index.html"] {
+    font-size: 1rem;
+    margin: 20px 0;
+  }
+  .detail {
+    overflow: auto;
+  }
+  .ShopText {
+    display: block;
+  }
+}
+.detailList {
+  font-family: "Helvetica Neue", sans-serif;
+  background: var(--bg-color);
+  margin: 0;
+  padding: 20px;
+  color: var(--text-main);
+  height: 100%;
+  overflow: hidden;
+}
+
+.detailList-lang-switch {
+  display: flex;
+  justify-content: end;
+  margin-right: 6%;
+}
+.detailList-lang-switch button {
+  margin-right: 5px;
+}
+
+.detailList-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--title-color);
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 26px;
+  color: var(--title-color);
+}
+
+.tab-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+
+.tab {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  background: var(--tab-bg);
+  color: var(--text-main);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.tab:hover {
+  background: var(--sub-color);
+  transform: scale(1.05);
+}
+
+.tab.active {
+  background: var(--tab-active);
+  color: var(--card-bg);
+  font-weight: bold;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: none;
+  max-width: 100vh;
+  width: 100%;
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  border: 2px solid var(--tab-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 60px 45px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card img {
+  width: 60%;
+  height: auto;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+.card p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.cardText-a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 30px;
+}
+.cardText-a p {
+  border: solid 3px var(--link-color);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.cardText-a p:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-top: 20px;
+  background-color: var(--delete-color);
+  color: var(--card-bg);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #ce3f3d;
+}
+
+.detailList-a[href="index.html"] {
+  display: block;
+  text-align: center;
+  color: var(--link-color);
+  font-size: 20px;
+  text-decoration: underline;
+  margin-top: 3%;
+}
+
+.detailList-a[href="index.html"]:hover {
+  color: var(--text-main);
+}
+
+#detailCardsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.cardText {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.3fr 1fr;
+  position: relative;
+}
+.cardText .cardTextLeft {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.cardText .cardTextRight {
+  grid-column: 2/3;
+  margin-top: 10px;
+  grid-row: 2/3;
+}
+.cardText .cardShopName {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
+@media screen and (max-width: 768px) {
+  .detailList {
+    padding: 15px;
+  }
+  .detailList-title {
+    font-size: 1.5rem;
+  }
+  .tab-container {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tab {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .card {
+    padding: 30px 20px;
+  }
+  .card img {
+    width: 100%; /* 图片全宽 */
+    margin: 10px 0;
+  }
+  .cardText {
+    display: block;
+  }
+  .cardTextLeft,
+  .cardTextRight {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .cardShopName {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  .delete-btn {
+    position: static;
+    margin: 20px auto 0;
+    display: block;
+  }
+  .detailList-a[href="index.html"] {
+    font-size: 18px;
+    margin: 30px 0;
+  }
+  .detailList-lang-switch {
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+  .lang-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}/*# sourceMappingURL=style.css.map */

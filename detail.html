@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>店舗詳細ページ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="detail">
+
+  <div class="details-lang-switch">
+    <button class="lang-btn" onclick="switchLanguage('ja')">日本語</button>
+    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+  </div>
+
+  <h1 class="lang-ja">店舗詳細情報</h1>
+  <h1 class="lang-en" style="display: none;">Shop Details</h1>
+
+  <div class="ShopDetail">
+    <div class="ShopText">
+      <h2 id="shopName">店舗名</h2>
+      <div class="shopTextLeft">
+       
+      <img id="shopImage" src="" alt="店舗画像" width="400">
+      <p id="shopCatch"></p>
+      <p><strong class="lang-ja">営業時間：</strong><strong class="lang-en">Open:</strong> <span id="shopOpen"></span></p>
+        <p><strong class="lang-ja">住所：</strong><strong class="lang-en">Address:</strong> <span id="shopAddress"></span></p>
+        <p><strong class="lang-ja">アクセス：</strong><strong class="lang-en">Access:</strong> <span id="shopAccess"></span></p>
+      </div><!--shopTextLeft-->
+      <div class="shopTextRight">
+        <p><strong class="lang-ja">平均予算：</strong><strong class="lang-en">Budget:</strong> <span id="shopPrice"></span></p>
+        <p><strong class="lang-ja">ジャンル：</strong><strong class="lang-en">Genre:</strong> <span id="shopGenre"></span></p>
+        <p><strong class="lang-ja">禁煙：</strong><strong class="lang-en">Non-smoking:</strong> <span id="shopNonSmoking"></span></p>
+        <p><strong class="lang-ja">カード：</strong><strong class="lang-en">Credit card:</strong> <span id="shopCard"></span></p>
+        <p><strong class="lang-ja">Wi-Fi：</strong><strong class="lang-en">Wi-Fi:</strong> <span id="shopWifi"></span></p>
+        <p><strong class="lang-ja">駐車場：</strong><strong class="lang-en">Parking:</strong> <span id="shopParking"></span></p>
+        <p><strong class="lang-ja">個室：</strong><strong class="lang-en">Private room:</strong> <span id="shopPrivateRoom"></span></p>
+      
+        <a id="shopLink" href="" target="_blank">
+          <span class="lang-ja">ホットペッパーで見る（予約）</span>
+          <span class="lang-en">View on Hot Pepper (Reserve)</span>
+        </a>
+      </div><!--shopTextRight-->
+    </div><!--shopText-->
+  </div><!--ShopDetail-->
+  
+  <a href="index.html" class="details-a lang-ja">← ホームに戻る</a>
+  <a href="index.html" class="details-a lang-en">← Back to Home</a>
+</div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="javaScript/detail.js"></script>
+</body>
+</html>
